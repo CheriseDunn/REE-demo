@@ -4,12 +4,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+st.set_page_config(page_title="Authentica.ai REE Predictor", layout="centered")
 st.image("https://raw.githubusercontent.com/cherisedunn/REE-demo/main/Authentica_Clean_Logo.png", use_column_width=True)
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-
-st.set_page_config(page_title="REE Regional Classifier", layout="centered")
-
 st.title("🔬 Rare Earth Element (REE) Origin Predictor")
 st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
 
