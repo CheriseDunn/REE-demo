@@ -44,11 +44,38 @@ if 'Region' in df.columns:
     st.pyplot(fig2)
 
     # Make predictions
-    st.subheader("🔎 Predict on Full Dataset")
-    predictions = model.predict(X)
-    # Get prediction probabilities (confidence)
-    # Confidence plot
-    st.subheader("📊 Prediction Confidence by Sample")
+st.subheader("🔮 Predict on Full Dataset")
+predictions = model.predict(X)
+
+# Get prediction probabilities (confidence)
+proba = model.predict_proba(X)
+confidence_scores = np.max(proba, axis=1) * 100  # Max probability for each prediction
+
+# Add predictions and confidence to DataFrame
+df['Predicted_Region'] = predictions
+df['Prediction_Confidence (%)'] = confidence_scores
+
+# Show dataframe with predictions
+st.dataframe(df)
+
+# Plot confidence scores
+st.subheader("📊 Prediction Confidence by Sample")
+fig_conf, ax_conf = plt.subplots()
+sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
+ax_conf.set_xlabel("Confidence (%)")
+ax_conf.set_ylabel("Sample Index")
+st.pyplot(fig_conf)
+# Show dataframe with predictions
+st.dataframe(df)
+
+# Plot confidence scores
+st.subheader("📊 Prediction Confidence by Sample")
+fig_conf, ax_conf = plt.subplots()
+sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
+ax_conf.set_xlabel("Confidence (%)")
+ax_conf.set_ylabel("Sample Index")
+st.pyplot(fig_conf)
+
     fig_conf, ax_conf = plt.subplots()
     sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
     ax_conf.set_xlabel("Confidence (%)")
