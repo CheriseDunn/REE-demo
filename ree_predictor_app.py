@@ -46,22 +46,22 @@ if uploaded_file:
         # Make predictions
         st.subheader("🔎 Predict on Full Dataset")
         predictions = model.predict(X)
-# Get prediction probabilities (confidence)
-# Confidence plot
-st.subheader("📊 Prediction Confidence by Sample")
-fig_conf, ax_conf = plt.subplots()
-sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
-ax_conf.set_xlabel("Confidence (%)")
-ax_conf.set_ylabel("Sample Index")
-st.pyplot(fig_conf)
-
-proba = model.predict_proba(X)
-confidence_scores = np.max(proba, axis=1) * 100  # Max probability for each prediction
-df['Prediction_Confidence (%)'] = confidence_scores
+        # Get prediction probabilities (confidence)
+        # Confidence plot
+        st.subheader("📊 Prediction Confidence by Sample")
+        fig_conf, ax_conf = plt.subplots()
+        sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
+        ax_conf.set_xlabel("Confidence (%)")
+        ax_conf.set_ylabel("Sample Index")
+        st.pyplot(fig_conf)
         
-df['Predicted_Region'] = predictions
+        proba = model.predict_proba(X)
+        confidence_scores = np.max(proba, axis=1) * 100  # Max probability for each prediction
+        df['Prediction_Confidence (%)'] = confidence_scores
+                
+        df['Predicted_Region'] = predictions
         st.dataframe(df)
-    else:
+        else:
         st.warning("⚠️ No 'Region' column found. Assuming prediction-only mode.")
 
         # Inference-only mode
