@@ -12,6 +12,8 @@ st.title("🔬 Rare Earth Element (REE) Origin Predictor")
 st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
 
 uploaded_file = st.file_uploader("Upload your REE CSV file", type="csv")
+st.write("Sample count per region:")
+st.write(y.value_counts())
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
@@ -22,7 +24,7 @@ if uploaded_file:
         # Split data for training
         X = df.drop('Region', axis=1)
         y = df['Region']
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, stratify=y, random_state=42)
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
         # Train model
         model = RandomForestClassifier(n_estimators=100, random_state=42)
@@ -44,7 +46,20 @@ if uploaded_file:
         # Make predictions
         st.subheader("🔎 Predict on Full Dataset")
         predictions = model.predict(X)
-        df['Predicted_Region'] = predictions
+# Get prediction probabilities (confidence)
+# Confidence plot
+st.subheader("📊 Prediction Confidence by Sample")
+fig_conf, ax_conf = plt.subplots()
+sns.barplot(y=df.index, x=df['Prediction_Confidence (%)'], hue=df['Predicted_Region'], dodge=False, ax=ax_conf)
+ax_conf.set_xlabel("Confidence (%)")
+ax_conf.set_ylabel("Sample Index")
+st.pyplot(fig_conf)
+
+proba = model.predict_proba(X)
+confidence_scores = np.max(proba, axis=1) * 100  # Max probability for each prediction
+df['Prediction_Confidence (%)'] = confidence_scores
+        
+df['Predicted_Region'] = predictions
         st.dataframe(df)
     else:
         st.warning("⚠️ No 'Region' column found. Assuming prediction-only mode.")
