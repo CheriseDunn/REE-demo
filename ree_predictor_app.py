@@ -18,7 +18,7 @@ with st.sidebar:
     st.markdown("[🧾 Download sample CSV](https://raw.githubusercontent.com/cherisedunn/REE-demo/main/Demo_REE_Expanded_Global.csv)")
 
 # --- BRAND ---
-st.image("https://raw.githubusercontent.com/cherisedunn/REE-demo/main/Authentica_Clean_Logo.png", use_column_width=True)
+st.image("Authentica_Logo.png", use_container_width=True)
 st.title("🔬 Rare Earth Element (REE) Origin Predictor")
 st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
 
