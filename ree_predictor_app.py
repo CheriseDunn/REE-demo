@@ -20,7 +20,7 @@ with st.sidebar:
 # --- BRAND ---
 st.image("Authentica_Logo.png", use_container_width=True)
 st.title("🔬 Rare Earth Element (REE) Origin Predictor")
-st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
+st.markdown("Upload your isotopic data to st.image("Authentica_Logo.png", use_container_width=True)predict the likely region of origin using a trained Random Forest model.")
 
 # --- FILE UPLOAD ---
 uploaded_file = st.file_uploader("📤 Upload your REE CSV file", type="csv")
