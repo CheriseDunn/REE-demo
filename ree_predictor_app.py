@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="REE Regional Classifier", layout="centered")
-st.image("Authentica_Logo.png", use_container_width=True)
+st.image("Authentica_Logo/Authentica_Logo.png", use_container_width=True)
 st.title("🧪 Rare Earth Element (REE) Origin Predictor")
 st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
 
