@@ -7,7 +7,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Authentica.ai REE Predictor", layout="centered")
+st.set_page_config(page_title="REE Regional Classifier", layout="centered")
+st.image("Authentica_Logo.png", use_container_width=True)
+st.title("🧪 Rare Earth Element (REE) Origin Predictor")
+st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
+
 
 # --- SIDEBAR ---
 with st.sidebar:
@@ -16,11 +20,6 @@ with st.sidebar:
     st.markdown("[🌐 Visit our website](https://reedomo.streamlit.app)")
     st.markdown("[📬 Contact us](mailto:hello@authentica.ai)")
     st.markdown("[🧾 Download sample CSV](https://raw.githubusercontent.com/cherisedunn/REE-demo/main/Demo_REE_Expanded_Global.csv)")
-
-# --- BRAND ---
-st.image("Authentica_Logo.png", use_container_width=True)
-st.title("🔬 Rare Earth Element (REE) Origin Predictor")
-st.markdown("Upload your isotopic data to st.image("Authentica_Logo.png", use_container_width=True)predict the likely region of origin using a trained Random Forest model.")
 
 # --- FILE UPLOAD ---
 uploaded_file = st.file_uploader("📤 Upload your REE CSV file", type="csv")
