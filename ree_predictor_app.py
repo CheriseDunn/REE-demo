@@ -8,6 +8,37 @@ from sklearn.model_selection import train_test_split
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="REE Regional Classifier", layout="centered")
+import streamlit as st
+from PIL import Image
+
+st.set_page_config(
+    page_title="Authentica.ai REE Origin Predictor",
+    page_icon="🔬",
+    layout="wide"
+)
+
+# Load the image from the /mnt/data path (works in Streamlit Cloud)
+logo_path = "/mnt/data/Screenshot 2025-04-02 at 00.34.40.png"
+logo = Image.open(logo_path)
+
+# Display the header with the logo
+st.markdown(
+    """
+    <div style='background-color: #f5f7fa; padding: 30px 0; border-radius: 10px; text-align: center;'>
+    """,
+    unsafe_allow_html=True
+)
+st.image(logo, width=120)
+st.markdown(
+    """
+        <h1 style='text-align: center; margin-bottom: 0;'>🧠 Authentica.ai</h1>
+        <h4 style='text-align: center; color: #6c757d; margin-top: 5px;'>Adding a Layer of Trust</h4>
+    </div>
+    <hr style='margin-top: 20px; margin-bottom: 40px;'>
+    """,
+    unsafe_allow_html=True
+)
+
 st.image("Authentica_Logo/Authentica_Logo.png", use_container_width=True)
 st.title("🧪 Rare Earth Element (REE) Origin Predictor")
 st.markdown("Upload your isotopic data to predict the likely region of origin using a trained Random Forest model.")
