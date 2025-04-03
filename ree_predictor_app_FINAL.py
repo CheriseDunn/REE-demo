@@ -9,8 +9,8 @@ from sklearn.model_selection import train_test_split
 
 # --- PAGE SETUP ---
 st.set_page_config(page_title="REE Provenance Predictor", layout="centered")
-st.markdown("""
- st.markdown(
+
+st.markdown(
     """
     <div style='text-align: center; padding: 30px 0;'>
         <h1>🧠 Authentica.ai</h1>
@@ -20,6 +20,7 @@ st.markdown("""
     """,
     unsafe_allow_html=True
 )
+
 
 
 # --- UPLOAD CSV ---
