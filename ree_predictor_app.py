@@ -5,7 +5,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from PIL import Image
 
 # --- PAGE CONFIG ---
 st.set_page_config(
@@ -14,17 +13,17 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- LOGO & HEADER ---
-logo_path = "/mnt/data/Screenshot 2025-04-02 at 00.34.40.png"
-logo = Image.open(logo_path)
-
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image(logo, width=120)
-    st.markdown("<h1 style='text-align: center;'>🧠 Authentica.ai</h1>", unsafe_allow_html=True)
-    st.markdown("<h4 style='text-align: center; color: #6c757d;'>Adding a Layer of Trust</h4>", unsafe_allow_html=True)
-
-st.markdown("<hr style='margin-top: 20px; margin-bottom: 30px;'>", unsafe_allow_html=True)
+# --- STATIC CLEAN HEADER (no image) ---
+st.markdown(
+    """
+    <div style='text-align: center; padding: 30px 0;'>
+        <h1 style='font-size: 2.8em; margin-bottom: 0;'>🧠 Authentica.ai</h1>
+        <h4 style='color: #6c757d; margin-top: 5px;'>Adding a Layer of Trust</h4>
+    </div>
+    <hr style='margin-top: 20px; margin-bottom: 30px;'>
+    """,
+    unsafe_allow_html=True
+)
 
 # --- APP TITLE ---
 st.title("🧪 Rare Earth Element (REE) Origin Predictor")
